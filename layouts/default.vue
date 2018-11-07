@@ -55,6 +55,7 @@ h5 {
   margin-bottom: 0.5rem;
 }
 p,
+label
 input,
 textarea {
   line-height: 150%;

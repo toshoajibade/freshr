@@ -8,11 +8,6 @@
       </div>
       <div>
         <div class="navbar-item">
-          <nuxt-link to="/search">
-            <p>Search</p>
-          </nuxt-link>
-        </div>
-        <div class="navbar-item">
           <nuxt-link to="/contact">
             <p>Contact Us</p>
           </nuxt-link>

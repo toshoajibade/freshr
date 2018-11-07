@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Freshr',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -76,8 +76,8 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/vuetify'
-    // { src: '@/plugins/vue-lazyload', ssr: false }
+  plugins: ['@/plugins/vuetify',
+    { src: '@/plugins/vue-lazyload', ssr: false }
   ],
 
   /*
