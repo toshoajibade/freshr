@@ -1,6 +1,6 @@
 <template>
   <div class="blog-item">
-    <progressive-img class="blog-item-image" :src="imageSrc" :alt="title" />
+    <progressive-img class="blog-item-image" :src="imageSrc" :placeholder="imageSrc" :alt="title" />
     <div class="blog-snippet">
       <h4>{{title}}</h4>
       <p>{{content}}..
