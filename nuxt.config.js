@@ -76,7 +76,8 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/vuetify'
+  plugins: [
+    '@/plugins/vuetify'
     // { src: '@/plugins/vue-lazyload', ssr: false }
   ],
 
@@ -96,6 +97,6 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {}
+    extend(config, { isDev, isClient }) {}
   }
 }
