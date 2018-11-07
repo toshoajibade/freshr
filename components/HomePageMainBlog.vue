@@ -1,8 +1,13 @@
 <template>
   <div class="homepage-main-blog">
+<<<<<<< HEAD
     <progressive-img class="main-blog-image" :src="mainBlog.fields.image.fields.file.url"
     :placeholder="mainBlog.fields.image.fields.file.url" 
     :alt="mainBlog.fields.title" />
+=======
+    <no-ssr>
+    <progressive-img class="main-blog-image" :src="mainBlog.fields.image.fields.file.url" :placeholder="mainBlog.fields.image.fields.file.url" :alt="mainBlog.fields.title" /></no-ssr>
+>>>>>>> reversal
     <div>
       <h4>{{mainBlog.fields.title}}</h4>
       <p class="content">{{contentSummary}}...<nuxt-link to="/blog/1" class="see-more">see more

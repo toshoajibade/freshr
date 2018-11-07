@@ -2,7 +2,12 @@
   <div class="page">
     <div class="main">
       <h4>{{title}}</h4>
+<<<<<<< HEAD
       <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" />
+=======
+      <no-ssr>
+      <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" /></no-ssr>
+>>>>>>> reversal
       <p class="content">{{content}}</p>
     </div>
     <SidePosts />
