@@ -77,8 +77,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
-    // { src: '@/plugins/vue-lazyload', ssr: false }
+    '@/plugins/vuetify',
+    { src: '@/plugins/vueProgressiveImage', ssr: false }
   ],
 
   /*

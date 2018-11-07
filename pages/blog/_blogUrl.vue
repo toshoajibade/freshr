@@ -2,7 +2,8 @@
   <div class="page">
     <div class="main">
       <h4>{{title}}</h4>
-      <img :src=imageUrl class="blog-image" :alt="title">
+      <no-ssr>
+      <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" /></no-ssr>
       <p class="content">{{content}}</p>
     </div>
     <SidePosts />

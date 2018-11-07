@@ -1,6 +1,7 @@
 <template>
   <div class="blog-item">
-    <img class="blog-item-image" :src="imageSrc" :alt="title">
+    <no-ssr>
+    <progressive-img class="blog-item-image" :src="imageSrc" :placeholder="imageSrc" :alt="title" /></no-ssr>
     <div class="blog-snippet">
       <h4>{{title}}</h4>
       <p>{{content}}..
