@@ -1,7 +1,7 @@
 <template>
   <div class="blog-list">
     <div v-for="blog in blogs" :key="blog.sys.id">
-      <BlogItem :title="blog.fields.title" :content="blog.fields.summary" :imageSrc="blog.fields.image.fields.file.url" :blogId="blog.sys.id" />
+      <BlogItem :title="blog.fields.title" :content="blog.fields.summary" :blogUrl="blog.fields.blogurl" :imageSrc="blog.fields.image.fields.file.url" :blogId="blog.sys.id" />
     </div>
   </div>
 </template>

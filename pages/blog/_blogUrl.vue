@@ -3,7 +3,8 @@
     <div class="main">
       <h4>{{title}}</h4>
       <no-ssr>
-      <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" /></no-ssr>
+        <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" />
+      </no-ssr>
       <p class="content">{{content}}</p>
     </div>
     <SidePosts />
@@ -23,18 +24,33 @@ export default {
       blogId: '',
       imageUrl: '',
       content: '',
-      title: ''
+      title: '',
+      blogUrl: ''
     }
   },
   async created() {
     this.blogId = this.$route.params.blogId
     this.title = this.$route.params.title
-    try {      
-      let res = await client.getEntry(this.blogId)
+    this.blogUrl = this.$route.params.blogUrl
+    let url = this.$route.path.split('/').pop()
+    try {
+      let res = null
+      if (this.blogId) {
+        res = await client.getEntry(this.blogId)
+      } else {
+        res = await client.getEntries({
+          content_type: 'author',
+          'fields.blogurl': url
+        })
+        res = res.items[0]
+      }
+      this.blogUrl = res.fields.blogurl
+      this.blogId = res.sys.id
       this.content = res.fields.content
+      this.title = res.fields.title
       this.imageUrl = res.fields.image.fields.file.url
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 }

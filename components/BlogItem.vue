@@ -30,14 +30,10 @@ export default {
     blogId: {
       required: true,
       type: String
-    }
-  },
-  computed: {
-    blogUrl() {
-      return this.title
-        .toLowerCase()
-        .replace(/[-:+=$#@]/g, '')
-        .replace(/\s/g, '-')
+    },
+    blogUrl: {
+      required: true,
+      type: String
     }
   }
 }
