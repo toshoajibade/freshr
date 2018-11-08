@@ -26,28 +26,22 @@ module.exports = {
     skipWaiting: true,
     runtimeCaching: [
       {
-        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-        urlPattern: /^https:\/\/fonts.googleapis.com/,
-        // Defaults to `networkFirst` if omitted
+        urlPattern: 'http://images.ctfassets.net/.*',
         handler: 'cacheFirst',
-        // Defaults to `GET` if omitted
-        method: 'GET'
+        method: 'GET',
+        strategyOptions: {
+          cacheName: 'Images',
+          cacheableResponse: { statuses: [0, 200] }
+        }
       },
       {
-        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-        urlPattern: /^\/\/images.ctfassets.net/,
-        // Defaults to `networkFirst` if omitted
-        handler: 'cacheFirst',
-        // Defaults to `GET` if omitted
-        method: 'GET'
-      },
-      {
-        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-        urlPattern: /^https:\/\/cdn.contentful.com\/spaces\/1z70a4v7vyxv\/environments\/master\/entries\/.*\?access_token=d8de7940bb3508fc72a9a699372187b76dea73001ede8f6d7f0be3616c242da7$/,
-        // Defaults to `networkFirst` if omitted
-        handler: 'cacheFirst',
-        // Defaults to `GET` if omitted
-        method: 'GET'
+        urlPattern: 'https://cdn.contentful.com/spaces/.*',
+        handler: 'staleWhileRevalidate',
+        method: 'GET',
+        strategyOptions: {
+          cacheName: 'Content Management',
+          cacheableResponse: { statuses: [0, 200] }
+        }
       }
     ]
   },
@@ -60,7 +54,7 @@ module.exports = {
     short_name: 'Freshr',
     lang: 'en',
     display: 'standalone',
-    background_color: '#76a6ff',
+    background_color: '#f7faff',
     theme_color: '#76a6ff'
   },
   /*
@@ -76,9 +70,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    { src: '@/plugins/vueProgressiveImage', ssr: false }
-  ],
+  plugins: [{ src: '@/plugins/vueProgressiveImage', ssr: false }],
 
   /*
   ** Nuxt.js modules
