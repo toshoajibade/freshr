@@ -53,4 +53,8 @@ export default {
 .see-more {
   color: #76a6ff;
 }
+.main-blog-image div {
+  font-size: 2rem;
+}
+
 </style>

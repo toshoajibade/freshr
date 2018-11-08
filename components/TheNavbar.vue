@@ -15,14 +15,16 @@
         <button class="subscribe-button" @click="showSubscribeModal">Subscribe</button>
       </div>
     </div>
-    <div v-show="openModal" class="subscribe-modal-wrapper" @click.self="closeSubscribeModal">
-      <div>
-        <div class="close-modal">
-          <v-icon @click="closeSubscribeModal">close</v-icon>
+    <transition name="fade">
+      <div v-show="openModal" class="subscribe-modal-wrapper" @click.self="closeSubscribeModal">
+        <div>
+          <div class="close-modal">
+            <i @click="closeSubscribeModal" class="material-icons">close</i>
+          </div>
+          <SubscribeSection @closeModal="closeSubscribeModal" class="subscribe-modal-input" />
         </div>
-        <SubscribeSection @closeModal="closeSubscribeModal" class="subscribe-modal-input" />
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -90,6 +92,7 @@ p {
   color: white;
   height: 50%;
   margin-left: 1rem;
+  background-color: transparent;
 }
 .subscribe-modal-wrapper {
   display: flex;
@@ -99,7 +102,7 @@ p {
   width: 100%;
   height: 100%;
   z-index: 200;
-  background-color: rgba(0, 0, 0, 0.452);
+  background-color: rgba(0, 0, 0, 0.8);
   & > div {
     width: 35%;
     height: 200px;
@@ -128,5 +131,11 @@ button:focus {
 .subscribe-section {
   width: 100%;
   padding: 2rem;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -11,7 +11,7 @@
     </div>
     <div class="more-posts-wrapper">
       <nuxt-link to="/blog" class="more-posts"><span>MORE</span>
-        <v-icon>arrow_forward_ios</v-icon>
+        <i class="material-icons">arrow_forward_ios</i>
       </nuxt-link>
     </div>
   </div>

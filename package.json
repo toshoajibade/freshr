@@ -21,8 +21,7 @@
     "nuxt": "^2.0.0",
     "sass-loader": "^7.1.0",
     "validator": "^10.8.0",
-    "vue-progressive-image": "^3.2.0",
-    "vuetify": "^1.2.4"
+    "vue-progressive-image": "^3.2.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^3.1.0",

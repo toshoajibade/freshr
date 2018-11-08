@@ -47,6 +47,7 @@ export default {
   border-radius: 25px;
   margin-top: 1rem;
   border: 1px solid #c4c4c4;
+  background-color: #f7faff;
   padding: 1rem;
   & :focus {
     outline: none;

@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Freshr',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -71,13 +71,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/style/app.styl'],
+  css: ['~/assets/style/app.scss'],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify',
     { src: '@/plugins/vueProgressiveImage', ssr: false }
   ],
 
@@ -97,6 +96,26 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, { isDev, isClient }) {}
+    extend(config, { isDev, isClient }) {
+      /** 
+       * Uncomment this to use webpack code spitting
+      if (isClient) {
+        config.optimization.splitChunks = Object.assign(
+          {},
+          config.optimization.splitChunks,
+          {
+            maxSize: 100000,
+            cacheGroups: {
+              vuetify: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vuetify',
+                chunks: 'all'
+              }
+            }
+          }
+          )
+        }
+         */
+    }
   }
 }

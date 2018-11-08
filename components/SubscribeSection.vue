@@ -1,7 +1,7 @@
 <template>
   <div class="subscribe-section">
     <h5>Enjoying our blog?</h5>
-    <p>Subscribe so we can be delivering them right to your inbox</p>
+    <label class="label">Subscribe so we can be delivering them right to your inbox</label>
     <div class="subscribe-section-input">
       <input v-model.trim="email_address" @blur="validate" type="email" placeholder="Enter your email here">
       <button class="subscribe-button" @click="subscribe">Subscribe</button>
@@ -92,5 +92,8 @@ button:focus {
   margin-top: 0.5rem;
   font-size: 0.85rem;
   color: #ff2e2e;
+}
+.label {
+  margin-bottom: 1rem
 }
 </style>
