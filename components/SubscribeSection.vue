@@ -1,7 +1,7 @@
 <template>
   <div class="subscribe-section">
     <h5>Enjoying our blog?</h5>
-    <label class="label">Subscribe so we can be delivering them right to your inbox</label>
+    <p class="label" >Subscribe so we can be delivering them right to your inbox</p>
     <div class="subscribe-section-input">
       <input v-model.trim="email_address" @blur="validate" type="email" placeholder="Enter your email here">
       <button class="subscribe-button" @click="subscribe">Subscribe</button>
@@ -56,12 +56,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.subscribe-section {
-  width: 50%;
-  padding: 2rem 0rem;
-  display: flex;
-  flex-direction: column;
-}
 .subscribe-button {
   background-color: #76a6ff;
   border-radius: 0 25px 25px 0;
