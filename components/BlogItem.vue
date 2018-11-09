@@ -1,9 +1,12 @@
 <template>
   <div class="blog-item">
     <no-ssr>
-    <progressive-img class="blog-item-image" :src="imageSrc" :placeholder="imageSrc" :alt="title" /></no-ssr>
+      <progressive-img class="blog-item-image" :src="imageSrc" :placeholder="imageSrc" :alt="title" />
+    </no-ssr>
     <div class="blog-snippet">
-      <h4>{{title}}</h4>
+      <nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl, blogId, title} }" class="see-more">
+        <h4>{{title}}</h4>
+      </nuxt-link>
       <p>{{content}}..
         <nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl, blogId, title} }" class="see-more">see more</nuxt-link>
       </p>

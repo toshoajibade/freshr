@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .blog-item:first-child {
   border-top: 0px;
 }
@@ -40,6 +40,9 @@ export default {
 }
 .blog-list {
   width: 75%;
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 }
 .side-posts {
   width: 25%;

@@ -7,7 +7,7 @@
         </nuxt-link>
       </div>
       <div>
-        <div class="navbar-item">
+        <div class="contact">
           <nuxt-link to="/contact">
             <p>Contact Us</p>
           </nuxt-link>
@@ -66,7 +66,7 @@ p {
   position: fixed;
   z-index: 100;
   top: 0px;
-  padding: 0px 120px;
+  padding: 0px 10%;
   & > div {
     display: flex;
     flex-direction: row;
@@ -79,6 +79,15 @@ p {
   margin: 0rem 1rem;
   display: flex;
   align-items: center;
+}
+.contact {
+  height: 100%;
+  margin: 0rem 1rem;
+  display: flex;
+  align-items: center;
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 .navbar-brand {
   height: 100%;
@@ -104,7 +113,8 @@ p {
   z-index: 200;
   background-color: rgba(0, 0, 0, 0.8);
   & > div {
-    width: 35%;
+    width: 400px;
+    margin: 2rem;
     height: 200px;
     border-radius: 25px;
     background-color: #f7faff;
@@ -132,10 +142,12 @@ button:focus {
   width: 100%;
   padding: 2rem;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

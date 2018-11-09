@@ -147,6 +147,9 @@ button {
 a {
   color: #76a6ff;
 }
+h4:hover {
+  cursor: pointer;
+}
 p,
 input,
 label,
@@ -161,7 +164,7 @@ i {
   background-color: #f7faff;
 }
 .page-body {
-  padding: 8rem 120px 2rem;
+  padding: 8rem 10% 2rem;
 }
 a,
 button {
@@ -189,10 +192,13 @@ h5 {
   margin-bottom: 0.5rem;
 }
 .subscribe-section {
-  width: 50%;
+  width: 400px;
   padding: 2rem 0rem;
   display: flex;
   flex-direction: column;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 }
 .main-content {
   width: 75%;

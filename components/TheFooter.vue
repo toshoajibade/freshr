@@ -3,8 +3,10 @@
     <div class="footer-content">
       <p class="company-description">FRESHR is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
       <div class="social-media-logo-wrapper">
-        <img src="@/assets/facebook.svg" class="social-media-logo" alt="facebook-logo"><p>freshr</p>
-        <img src="@/assets/twitter.svg" class="social-media-logo" alt="twitter-logo"><p>freshr</p>
+        <img src="@/assets/facebook.svg" class="social-media-logo" alt="facebook-logo">
+        <p>freshr</p>
+        <img src="@/assets/twitter.svg" class="social-media-logo" alt="twitter-logo">
+        <p>freshr</p>
       </div>
     </div>
   </footer>
@@ -23,7 +25,7 @@ export default {
   display: flex;
   flex-direction: row;
   background-color: #e6edfc;
-  padding: 0px 120px;
+  padding: 0px 10%;
   justify-content: center;
   align-items: center;
 }
@@ -35,7 +37,17 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 }
+// .footer-contact-us {
+//   display: none;
+//   color: #76a6ff;
+//   @media (max-width: 600px) {
+//     display: block;
+//   }
+// }
 .social-media-logo {
   height: 1rem;
 }

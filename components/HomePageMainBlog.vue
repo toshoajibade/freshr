@@ -1,10 +1,13 @@
 <template>
   <div class="homepage-main-blog">
     <no-ssr>
-    <progressive-img class="main-blog-image" :src="mainBlog.fields.image.fields.file.url" :placeholder="mainBlog.fields.image.fields.file.url" :alt="mainBlog.fields.title" /></no-ssr>
+      <progressive-img class="main-blog-image" :src="mainBlog.fields.image.fields.file.url" :placeholder="mainBlog.fields.image.fields.file.url" :alt="mainBlog.fields.title" />
+    </no-ssr>
     <div>
-      <h4>{{mainBlog.fields.title}}</h4>
-      <p class="content">{{contentSummary}}...<nuxt-link to="/blog/1" class="see-more">see more
+      <nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl: mainBlog.fields.blogurl, blogId: mainBlog.sys.id, title: mainBlog.fields.title} }">
+        <h4>{{mainBlog.fields.title}}</h4>
+      </nuxt-link>
+      <p class="content">{{contentSummary}}...<nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl: mainBlog.fields.blogurl, blogId: mainBlog.sys.id, title: mainBlog.fields.title} }" class="see-more">see more
         </nuxt-link>
       </p>
     </div>
@@ -56,5 +59,4 @@ export default {
 .main-blog-image div {
   font-size: 2rem;
 }
-
 </style>

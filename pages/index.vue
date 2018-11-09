@@ -51,6 +51,9 @@ export default {
 .blogs-section {
   margin-bottom: 3rem;
   width: 75%;
+  @media (max-width: 748px) {
+    width: 100%;
+  }
 }
 .content-body {
   display: flex;
@@ -73,4 +76,5 @@ export default {
     padding: 0.25rem;
   }
 }
+
 </style>

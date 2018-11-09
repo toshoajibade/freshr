@@ -2,7 +2,7 @@
   <div class="side-posts">
     <h5>Trending</h5>
     <ul v-for="post in posts" :key="post">
-      <SidePostsItem :title="post" />
+      <SidePostsItem blogId='3CpfyViJ1K2OeUCkkUgkAQ' :title="post" />
     </ul>
   </div>
 </template>
@@ -48,5 +48,8 @@ ul {
 .side-posts {
   width: 25%;
   margin-left: 4rem;
+  @media(max-width: 768px) {
+    display: none;
+  }
 }
 </style>

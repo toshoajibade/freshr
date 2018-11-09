@@ -2,59 +2,37 @@
   <div class="page">
     <div class="main">
       <h4>We will definitely love to hear from you</h4>
-      <div>
-        <textarea name="message" v-model="messageAdmin" placeholder="Type your message here" class="textarea" />
-        <div class="error-wrapper">
-          <p class="error" v-if="error.messageAdmin">Message can not be empty</p>
-        </div>
-        <button class="send-button" @click="sendMessage">Send</button>
+      <div class="contact-us">
+        <p>Email: inquiries@freshr.com</p>
+        <p>Phone Number: 08099999999</p>
+        <p>Address: No 2, Block C, Third Mainland Bridge, Lagos, Nigeria</p>
       </div>
     </div>
-    <SidePosts class="side-posts"/>
+    <SidePosts class="side-posts" />
   </div>
 </template>
 
 <script>
-import validator from 'validator'
 import SidePosts from '@/components/SidePosts'
 export default {
   components: {
     SidePosts
-  },
-  data() {
-    return {
-      messageAdmin: '',
-      error: {
-        messageAdmin: false
-      }
-    }
-  },
-  methods: {
-    sendMessage() {
-      this.error = {}
-      if (validator.isEmpty(this.messageAdmin))
-        return (this.error.messageAdmin = true)
-      console.log(`i am coming`)
-    }
   }
 }
 </script>
 
 <style lang='scss' scoped>
-.textarea {
-  width: 100%;
-  height: 350px;
-  border-radius: 25px;
-  margin-top: 1rem;
-  border: 1px solid #c4c4c4;
-  background-color: #f7faff;
-  padding: 1rem;
-  & :focus {
-    outline: none;
+.contact-us {
+  & > * {
+    margin: 2rem 0rem;
   }
 }
 .page {
   display: flex;
+  height: 100vh;
+}
+p {
+  font-size: 1.2rem;
 }
 .main {
   width: 75%;
