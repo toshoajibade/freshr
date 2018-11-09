@@ -1,6 +1,7 @@
 <template>
   <div class="blog-page">
-    <BlogList class="blog-list" :blogs='blogs' />
+    <!--The BlogList Component contains the main bloglist and the SidePosts component is the aside posts-->
+    <BlogList :blogs='blogs' />
     <SidePosts class="side-posts" />
   </div>
 </template>
@@ -8,6 +9,9 @@
 <script>
 import BlogList from '@/components/BlogList'
 import SidePosts from '@/components/SidePosts'
+
+// The client is the plugin from the content management system (contentful)
+
 import { client } from '@/middleware/contentManagement'
 
 export default {
@@ -37,14 +41,10 @@ export default {
 .blog-page {
   display: flex;
   flex-direction: row;
-}
-.blog-list {
-  width: 75%;
-  @media(max-width: 768px) {
-    width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column
   }
 }
-.side-posts {
-  width: 25%;
-}
+
+
 </style>

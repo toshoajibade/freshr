@@ -203,6 +203,27 @@ h5 {
 .main-content {
   width: 75%;
 }
+.side-posts {
+  width: 25%;
+  margin-left: 4rem;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 0rem;
+    margin-top: 2rem;
+  }
+}
+.side-posts-desktop {
+  display: block;
+  @media (max-width: 768px) {
+    display: none
+  }
+}
+.side-posts-mobile {
+  display: none;
+  @media (max-width: 768px) {
+    display: block
+  }
+}
 @font-face {
   font-family: Roboto;
   font-display: auto;

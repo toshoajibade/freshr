@@ -6,8 +6,9 @@
         <progressive-img :src="imageUrl" :placeholder="imageUrl" class="blog-image" :alt="title" />
       </no-ssr>
       <p class="content">{{content}}</p>
+      <SidePosts topic='Similar Posts' class="side-posts-mobile"/>
     </div>
-    <SidePosts />
+    <SidePosts topic='Similar Posts' class="side-posts-desktop"/>
   </div>
 </template>
 
@@ -28,6 +29,9 @@ export default {
       blogUrl: ''
     }
   },
+
+/**If the user is navigating from other parts of the site, search the database by blogId but if the user is navigating from a url, extract the last part of the url and use it to query the database */
+
   async created() {
     this.blogId = this.$route.params.blogId
     this.title = this.$route.params.title
@@ -56,7 +60,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .page {
   display: flex;
 }
@@ -64,14 +68,18 @@ export default {
   width: 100%;
   height: 350px;
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: 5%;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .main {
   width: 75%;
+  @media (max-width: 768px) {
+    width: 100%
+  }
 }
 .content {
   line-height: 1.6;
 }
+
 </style>

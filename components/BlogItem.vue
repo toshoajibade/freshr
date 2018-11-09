@@ -1,5 +1,8 @@
 <template>
   <div class="blog-item">
+
+    <!--Use the no ssr flag to lazy load the image on the front end the progressive-img tab is the tag from the lazy loading plugin-->
+    
     <no-ssr>
       <progressive-img class="blog-item-image" :src="imageSrc" :placeholder="imageSrc" :alt="title" />
     </no-ssr>
@@ -52,7 +55,7 @@ export default {
 .blog-item-image {
   width: 25%;
   height: 100%;
-  border-radius: 25px;
+  border-radius: 10%;
 }
 .blog-snippet {
   width: 75%;
@@ -63,6 +66,6 @@ export default {
   color: #76a6ff;
 }
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.2rem; 
 }
 </style>

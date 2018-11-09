@@ -8,7 +8,7 @@
         <p>Address: No 2, Block C, Third Mainland Bridge, Lagos, Nigeria</p>
       </div>
     </div>
-    <SidePosts class="side-posts" />
+    <SidePosts class="side-posts-desktop" />
   </div>
 </template>
 
@@ -36,27 +36,9 @@ p {
 }
 .main {
   width: 75%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
-.send-button {
-  background-color: #76a6ff;
-  border-radius: 25px;
-  color: white;
-  height: 2rem;
-  padding: 0.5rem 2rem;
-}
-button:focus,
-textarea:focus {
-  outline: none;
-}
-textarea {
-  resize: none;
-}
-.error-wrapper {
-  height: 2rem;
-  margin-top: 0.5rem;
-}
-.error {
-  font-size: 0.85rem;
-  color: #ff2e2e;
-}
+
 </style>
