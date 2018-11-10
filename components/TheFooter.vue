@@ -28,6 +28,9 @@ export default {
   padding: 0px 10%;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    padding: 0px 5%
+  }
 }
 p {
   text-align: center;

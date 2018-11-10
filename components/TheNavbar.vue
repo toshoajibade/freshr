@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="navbar">
+    <transition name="fade">
+    <div class="navbar" v-show="showNavbar">
       <div class="navbar-brand">
         <nuxt-link to="/">
           <img class="logo" src="@/assets/logo.svg" alt="logo">
@@ -15,6 +16,7 @@
         <button class="subscribe-button" @click="showSubscribeModal">Subscribe</button>
       </div>
     </div>
+    </transition>
     <transition name="fade">
       <div v-show="openModal" class="subscribe-modal-wrapper" @click.self="closeSubscribeModal">
         <div>
@@ -37,7 +39,23 @@ export default {
   },
   data() {
     return {
-      openModal: false
+      openModal: false,
+      showNavbar: true
+    }
+  },
+  mounted() {
+    if (window.innerWidth < 900) {
+      let prevScrollPos = window.pageYOffset;
+      window.addEventListener('scroll', () => {
+        let currentScrollPos = window.pageYOffset
+        if(currentScrollPos > 112) {
+          this.showNavbar = false
+          currentScrollPos > prevScrollPos ? this.showNavbar = false : this.showNavbar = true
+        } else {
+          this.showNavbar = true
+        }
+        prevScrollPos = currentScrollPos
+      })
     }
   },
   methods: {
@@ -67,6 +85,9 @@ p {
   z-index: 100;
   top: 0px;
   padding: 0px 10%;
+  @media (max-width: 600px) {
+    padding: 0px 5%;
+  }
   & > div {
     display: flex;
     flex-direction: row;

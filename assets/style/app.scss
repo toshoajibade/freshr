@@ -168,6 +168,9 @@ i {
 }
 .page-body {
   padding: 8rem 10% 2rem;
+  @media (max-width: 600px) {
+    padding: 8rem 5% 2rem;
+  }
 }
 a,
 button {
