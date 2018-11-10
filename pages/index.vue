@@ -5,9 +5,10 @@
       <div class="blogs-section">
         <h5>LATESTS</h5>
         <BlogList class="blog-list" :blogs='blogs' />
+        <SidePosts class="side-posts-mobile" />
         <SubscribeSection class="subscribe-section" />
       </div>
-      <SidePosts class="side-posts-desktop"/>
+      <SidePosts class="side-posts-desktop" />
     </div>
     <div class="more-posts-wrapper">
       <nuxt-link to="/blog" class="more-posts"><span>MORE</span>
@@ -32,14 +33,15 @@ export default {
     SubscribeSection
   },
 
-    // Fetch data from the content management system and fill in data
+  // Fetch data from the content management system and fill in data
 
   async asyncData() {
     try {
-      let response = await client.getEntries({ /**get only the first 6 items for the homepage */
+      let response = await client.getEntries({
+        /**get only the first 6 items for the homepage */
         limit: 6
       })
-      let mainBlog = response.items.shift() 
+      let mainBlog = response.items.shift()
       /**The last blog item will be the main blog displayed on the homepage, seperate it and pass the others to the blog list
        */
       return {
@@ -54,7 +56,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .blogs-section {
-  margin-bottom: 3rem;
   width: 75%;
   @media (max-width: 768px) {
     width: 100%;
@@ -81,5 +82,4 @@ export default {
     padding: 0.25rem;
   }
 }
-
 </style>

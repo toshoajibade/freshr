@@ -43,9 +43,9 @@ export default {
   & :visited {
     color: #76a6ff;
   }
-  @media (max-width: 768px) {    
-  border-top: 1px solid #e0e0e0;
-  padding-top: 1rem;
+  @media (max-width: 768px) {
+    border-top: 1px solid #f3f3f3;
+    padding-top: 1rem;
   }
 }
 li {

@@ -141,6 +141,9 @@ button:focus {
 .subscribe-section {
   width: 100%;
   padding: 2rem;
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 }
 .fade-enter-active,
 .fade-leave-active {
