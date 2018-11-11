@@ -91,6 +91,7 @@ export default {
   }
   @media (max-width: 768px) {
     flex-direction: column;
+    margin-bottom: 2rem;
   }
 }
 .see-more {

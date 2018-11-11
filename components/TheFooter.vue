@@ -2,12 +2,7 @@
   <footer class="footer">
     <div class="footer-content">
       <p class="company-description">FRESHR is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-      <div class="social-media-logo-wrapper">
-        <img src="@/assets/facebook.svg" class="social-media-logo" alt="facebook-logo">
-        <p>freshr</p>
-        <img src="@/assets/twitter.svg" class="social-media-logo" alt="twitter-logo">
-        <p>freshr</p>
-      </div>
+
     </div>
   </footer>
 </template>

@@ -3,14 +3,16 @@ const consola = require('consola')
 const axios = require('axios')
 const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('body-parser')
+const dotenv = require('dotenv')
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
 app.set('port', port)
-
+dotenv.config()
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
+
 config.dev = !(process.env.NODE_ENV === 'production')
 
 app.use(bodyParser.json())
@@ -19,11 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.post('/api/subscribe', async (req, res) => {
   try {
     const addSubscriberToMailChimp = await axios.post(
-      'https://us19.api.mailchimp.com/3.0/lists/c92b57593d/members/',
+      `${process.env.MAILCHIMP_LIST}`,
       req.body,
       {
         headers: {
-          Authorization: `apikey b1b09ee39e997bb0b14ddba069cab908-us19`
+          Authorization: `apikey ${process.env.MAILCHIMP_APIKEY}`
         }
       }
     )
