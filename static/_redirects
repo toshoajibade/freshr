@@ -1,1 +1,1 @@
-/blog/:blogUrl /blog/:blogUrl 200
+/blog/:blogUrl /:blogUrl 200
