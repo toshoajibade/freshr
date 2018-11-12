@@ -35,7 +35,7 @@ export default {
 
   // Fetch data from the content management system and fill in data
 
-  async mounted() {
+  async asyncData() {
     try {
       let response = await client.getEntries({
         /**get only the first 6 items for the homepage */

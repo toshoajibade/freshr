@@ -17,12 +17,9 @@ export default {
       type: String
     }
   },
-  computed: {
-    blogUrl() {
-      return this.title
-        .toLowerCase()
-        .replace(/[-:+=$#@]/g, '')
-        .replace(/\s/g, '-')
+  data() {
+    return {
+      blogUrl: 'dating-101'
     }
   }
 }
