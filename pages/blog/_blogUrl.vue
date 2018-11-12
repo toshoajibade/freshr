@@ -22,39 +22,24 @@ export default {
   components: {
     SidePosts
   },
-  data() {
-    return {
-      blogId: '',
-      imageUrl: '',
-      content: '',
-      title: '',
-      blogUrl: ''
-    }
-  },
 
   /**If the user is navigating from other parts of the site, search the database by blogId but if the user is navigating from a url, extract the last part of the url and use it to query the database */
 
-  async created() {
-    this.blogId = this.$route.params.blogId
-    this.title = this.$route.params.title
-    this.blogUrl = this.$route.params.blogUrl
-    let url = this.$route.path.split('/').pop()
+  async asyncData({ req, params }) {
+    let url = params.blogUrl || req.path.split('/').pop()
     try {
-      let res = null
-      if (this.blogId) {
-        res = await client.getEntry(this.blogId)
-      } else {
-        res = await client.getEntries({
-          content_type: 'author',
-          'fields.blogurl': url
-        })
-        res = res.items[0]
+      let res = await client.getEntries({
+        content_type: 'author',
+        'fields.blogurl': url
+      })
+      res = res.items[0]
+      return {
+        blogUrl: res.fields.blogurl,
+        blogId: res.sys.id,
+        content: res.fields.content,
+        title: res.fields.title,
+        imageUrl: res.fields.image.fields.file.url
       }
-      this.blogUrl = res.fields.blogurl
-      this.blogId = res.sys.id
-      this.content = res.fields.content
-      this.title = res.fields.title
-      this.imageUrl = res.fields.image.fields.file.url
     } catch (error) {
       // console.log(error)
     }
