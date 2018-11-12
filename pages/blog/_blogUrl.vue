@@ -36,7 +36,6 @@ export default {
 
   async mounted() {
     let url = this.$route.path.split('/').pop()
-    console.log(url)
     try {
       let res = await client.getEntries({
         content_type: 'author',
