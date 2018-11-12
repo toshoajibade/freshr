@@ -31,7 +31,6 @@ export default {
     async subscribe() {
       this.error = {}
       this.validate()
-      // let BASE_URL = process.env.BASE_URL || 'http://127.0.0.1:3000'
       if (Object.keys(this.error).length !== 0) return
       try {
         const res = await this.$axios.post(

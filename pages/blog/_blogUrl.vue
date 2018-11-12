@@ -25,21 +25,21 @@ export default {
 
   /**If the user is navigating from other parts of the site, search the database by blogId but if the user is navigating from a url, extract the last part of the url and use it to query the database */
 
-  async asyncData({req, res, params}) {
+  async asyncData({ req, params }) {
     let url = params.blogUrl || req.path.split('/').pop()
     try {
-        let res = await client.getEntries({
-          content_type: 'author',
-          'fields.blogurl': url
-        })
-        res = res.items[0]
-        return {
-          blogUrl: res.fields.blogurl,
-          blogId: res.sys.id,
-          content: res.fields.content,
-          title: res.fields.title,
-          imageUrl: res.fields.image.fields.file.url
-        }
+      let res = await client.getEntries({
+        content_type: 'author',
+        'fields.blogurl': url
+      })
+      res = res.items[0]
+      return {
+        blogUrl: res.fields.blogurl,
+        blogId: res.sys.id,
+        content: res.fields.content,
+        title: res.fields.title,
+        imageUrl: res.fields.image.fields.file.url
+      }
     } catch (error) {
       // console.log(error)
     }
