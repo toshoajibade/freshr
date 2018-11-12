@@ -25,7 +25,7 @@ export default {
 
   /**If the user is navigating from other parts of the site, search the database by blogId but if the user is navigating from a url, extract the last part of the url and use it to query the database */
 
-  async asyncData({ params }) {
+  async asyncData({ params, req }) {
     let url = params.blogUrl || req.path.split('/').pop()
     try {
       let res = await client.getEntries({
