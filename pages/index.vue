@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-cloak>
     <HomePageMainBlog :mainBlog="mainBlog" />
     <div class="content-body">
       <div class="blogs-section">
