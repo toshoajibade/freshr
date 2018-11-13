@@ -11,7 +11,7 @@
         <h4>{{title}}</h4>
       </nuxt-link>
       <p class="blog-item-content">{{content}}..
-        <nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl, blogId, title} }" class="see-more">see more</nuxt-link>
+        <nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl, blogId, title} }" class="see-more">see&nbsp;more</nuxt-link>
       </p>
     </div>
   </div>
@@ -51,13 +51,13 @@ export default {
   flex-direction: row;
   border-top: 1px solid #f3f3f3;
   padding: 1rem 0rem;
-  height: 150px;
+  height: 180px;
   @media (max-width: 1200px) {
     height: 100px;
   }
 }
 .blog-item-image {
-  width: 150px;
+  width: 180px;
   height: 100%;
   border-radius: 10%;
   @media (max-width: 1200px) {
@@ -70,9 +70,10 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   @media (max-width: 1200px) {
     width: calc(100% - 100px);
+    justify-content: center;
   }
 }
 .see-more {

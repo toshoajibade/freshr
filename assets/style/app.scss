@@ -1,6 +1,7 @@
 :root {
   font-family: Roboto;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 300;
 }
 * {
   font-family: Roboto, Arial, sans-serif;
@@ -167,7 +168,7 @@ i {
   background-color: #f7faff;
 }
 .page-body {
-  padding: 8rem 10% 2rem;
+  padding: 6rem 10% 2rem;
   @media (max-width: 600px) {
     padding: 6rem 5% 2rem;
   }
@@ -183,12 +184,16 @@ button {
     color: inherit;
   }
 }
+.message {
+  color: #76a6ff;
+  font-weight: 400;
+
+}
 h4 {
   font-size: 1.5rem;
   font-family: Roboto;
   font-weight: 400;
   color: #3c3c3c;
-  margin-bottom: 0.5rem;
 }
 h5 {
   font-size: 1.2rem;
@@ -235,6 +240,7 @@ h5 {
   font-display: auto;
   src: url(https://fonts.googleapis.com/css?family=Roboto) format('ttf');
 }
-[v-cloak] {
-  display: none;
+
+a {
+  line-height: 1.5
 }

@@ -136,7 +136,6 @@ p {
   & > div {
     width: 400px;
     margin: 2rem;
-    height: 200px;
     border-radius: 25px;
     background-color: #f7faff;
     position: relative;

@@ -22,31 +22,24 @@ export default {
   components: {
     SidePosts
   },
-  data() {
-    return {
-      blogUrl: '',
-      blogId: '',
-      content: '',
-      title: '',
-      imageUrl: ''
-    }
-  },
 
   /**If the user is navigating from other parts of the site, search the database by blogId but if the user is navigating from a url, extract the last part of the url and use it to query the database */
 
-  async created() {
-    let url = this.$route.params.blogUrl
+  async asyncData({ route }) {
+    let url = route.params.blogUrl
     try {
       let res = await client.getEntries({
         content_type: 'author',
         'fields.blogurl': url
       })
       res = res.items[0]
-        this.blogUrl = res.fields.blogurl,
-        this.blogId = res.sys.id,
-        this.content = res.fields.content,
-        this.title = res.fields.title,
-        this.imageUrl = res.fields.image.fields.file.url
+      return {
+        blogUrl: res.fields.blogurl,
+        blogId: res.sys.id,
+        content: res.fields.content,
+        title: res.fields.title,
+        imageUrl: res.fields.image.fields.file.url
+      }
     } catch (error) {
       // console.log(error)
     }

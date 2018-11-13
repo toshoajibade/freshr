@@ -10,7 +10,7 @@
         </div>
       </no-ssr>
       <div>
-        <p class="content">{{contentSummary}}...<nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl: mainBlog.fields.blogurl, blogId: mainBlog.sys.id, title: mainBlog.fields.title} }" class="see-more">see more
+        <p class="content">{{contentSummary}}...<nuxt-link :to="{name: 'blog-blogUrl', params: {blogUrl: mainBlog.fields.blogurl, blogId: mainBlog.sys.id, title: mainBlog.fields.title} }" class="see-more">see&nbsp;more
           </nuxt-link>
         </p>
       </div>
@@ -42,13 +42,13 @@ export default {
     checkWindowWidth() {
       let width = window.innerWidth
       switch (true) {
-        case width > 1000:
+        case width > 1200:
           this.updateContentSummary(100)
           break
-        case width > 900:
+        case width > 1000:
           this.updateContentSummary(75)
           break
-        case width > 600:
+        case width > 750:
           this.updateContentSummary(50)
           break
         default:
