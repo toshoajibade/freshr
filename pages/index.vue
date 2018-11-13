@@ -21,6 +21,7 @@
 <script>
 import HomePageMainBlog from '@/components/HomePageMainBlog'
 import BlogList from '@/components/BlogList'
+import SuccessNotification from '@/components/SuccessNotification'
 import SidePosts from '@/components/SidePosts'
 import SubscribeSection from '@/components/SubscribeSection'
 import { client } from '@/middleware/contentManagement'
@@ -30,7 +31,8 @@ export default {
     HomePageMainBlog,
     BlogList,
     SidePosts,
-    SubscribeSection
+    SubscribeSection,
+    SuccessNotification
   },
 
   // Fetch data from the content management system and fill in data

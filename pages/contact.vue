@@ -2,42 +2,68 @@
   <div class="page">
     <div class="main">
       <h4>We will definitely love to hear from you</h4>
-
-      <div>
-        <!-- <input v-model.trim="email_address" @blur="validate" type="email" placeholder="Enter your email here"> -->
-
-        <textarea name="message" v-model="messageAdmin" placeholder="Type your message here" class="textarea" />
-        <div class="error-wrapper">
-          <p class="error" v-if="error.messageAdmin">Message can not be empty</p>
+      <form>
+        <div>
+          <label for="senderEmailAddress">Email</label>
+          <input v-model.trim="email_address" id="senderEmailAddress" class="input" type="email" placeholder="Enter your email here">
+          <div class="error-wrapper">
+            <p class="error" v-if="error.email_address">{{error.email_address}}</p>
+          </div>
         </div>
-        <button class="send-button" @click="sendMessage">Send</button>
-      </div>
+        <div>
+          <label for="messageToSend">Message</label>
+          <textarea name="message" id="messageToSend" v-model.trim="message" placeholder="Type your message here" class="textarea" />
+          <div class="error-wrapper">
+            <p class="error" v-if="error.message">{{error.message}}</p>
+          </div>
+        </div>
+        <button class="send-button" @click.prevent="sendMessage">Send</button>
+      </form>
     </div>
     <SidePosts class="side-posts-desktop"/>
   </div>
 </template>
 
 <script>
-import validator from 'validator'
+import isEmail from 'validator/lib/isEmail'
+import isEmpty from 'validator/lib/isEmpty'
 import SidePosts from '@/components/SidePosts'
+
 export default {
   components: {
     SidePosts
   },
   data() {
     return {
-      messageAdmin: '',
+      message: '',
+      email_address: '',
       error: {
-        messageAdmin: false
+        message: '',
+        email_address: ''
       }
     }
   },
   methods: {
-    sendMessage() {
+    async sendMessage() {
       this.error = {}
-      if (validator.isEmpty(this.messageAdmin))
-        return (this.error.messageAdmin = true)
-      console.log(`i am coming`)
+      try {
+        this.validateInput()
+        if (this.error.message || this.error.email_address) return
+        const res = await this.$axios.post(`/api/sendmessage`, {
+          email_address: this.email_address,
+          message: this.message
+        })
+        if (res.status === 200) {
+          console.log('success')
+        }
+      } catch (error) {
+        console.log('failed')
+      }
+    },
+    validateInput() {
+      if (!isEmail(this.email_address))
+        this.error.email_address = `Please enter a valid email address`
+      if (isEmpty(this.message)) this.error.message = `Message can not be empty`
     }
   }
 }
@@ -45,23 +71,33 @@ export default {
 
 <style lang='scss' scoped>
 .textarea {
+  height: 250px;
+}
+
+.input,
+.textarea {
   width: 100%;
-  height: 350px;
+  font-weight: 300;
+  font-size: 1rem;
   border-radius: 25px;
-  margin-top: 1rem;
   border: 1px solid #c4c4c4;
   background-color: #f7faff;
-  padding: 1rem;
+  padding: 0.75rem;
+  outline: none;
   & :focus {
     outline: none;
   }
 }
+.error-wrapper, label {
+  padding-left: 0.75rem;
+}
 .page {
   display: flex;
+  justify-content: space-between;
 }
 .main {
-  width: 75%;
-  @media (max-width: 768px) {
+  width: 50%;
+  @media (max-width: 900px) {
     width: 100%;
   }
 }
@@ -69,7 +105,6 @@ export default {
   background-color: #76a6ff;
   border-radius: 25px;
   color: white;
-  height: 2rem;
   padding: 0.5rem 2rem;
 }
 button:focus,
@@ -80,11 +115,13 @@ textarea {
   resize: none;
 }
 .error-wrapper {
-  height: 2rem;
-  margin-top: 0.5rem;
+  height: 1.5rem;
 }
 .error {
   font-size: 0.85rem;
   color: #ff2e2e;
+}
+h4 {
+  margin-bottom: 0.5rem;
 }
 </style>

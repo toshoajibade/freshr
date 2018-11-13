@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import validator from 'validator'
+import isEmail from 'validator/lib/isEmail';
+
 export default {
   name: 'SubscribeSection',
   data() {
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     async validate() {
-      if (!validator.isEmail(this.email_address))
+      if (!isEmail(this.email_address))
         return (this.error_email = `Please enter a valid email address`)
     },
     async subscribe() {
@@ -79,6 +80,10 @@ export default {
     border: 1px solid #76a6ff;
     border-radius: 25px 0px 0px 25px;
   }
+}
+input {
+  font-size: 1rem;
+  font-weight: 300;
 }
 input:focus,
 button:focus {

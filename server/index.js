@@ -1,12 +1,12 @@
 const express = require('express')
 const consola = require('consola')
-const axios = require('axios')
 const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
+const controller = require('./controller')
 
 app.set('port', port)
 dotenv.config()
@@ -18,29 +18,8 @@ config.dev = !(process.env.NODE_ENV === 'production')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.post('/api/subscribe', async (req, res) => {
-  try {
-    const addSubscriberToMailChimp = await axios.post(
-      `${process.env.MAILCHIMP_LIST}`,
-      req.body,
-      {
-        headers: {
-          Authorization: `apikey ${process.env.MAILCHIMP_APIKEY}`
-        }
-      }
-    )
-    if (addSubscriberToMailChimp.status === 200)
-      res.status(200).send({ message: `success` })
-  } catch (err) {
-    if (err.response.data) {
-      err.response.data.title === `Member Exists`
-        ? res.status(304).send({ msg: `member already exist` })
-        : res.status(400).send({ msg: `failed` })
-    } else {
-      res.status(400).send({ msg: `failed` })
-    }
-  }
-})
+app.post('/api/subscribe', controller.addSubsciber)
+app.post('/api/sendmessage', controller.sendMessage)
 
 async function start() {
   // Init Nuxt.js
