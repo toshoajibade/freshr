@@ -1,5 +1,5 @@
 <template>
-  <div class="page" v-cloak>
+  <div class="page">
     <div class="main">
       <h4 class="blog-title">{{title}}</h4>
       <no-ssr>

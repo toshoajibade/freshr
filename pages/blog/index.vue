@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-page" v-cloak>
+  <div class="blog-page">
     <!--The BlogList Component contains the main bloglist and the SidePosts component is the aside posts-->
     <BlogList :blogs='blogs' />
     <SidePosts class="side-posts" />

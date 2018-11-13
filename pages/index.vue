@@ -1,5 +1,5 @@
 <template>
-  <div v-cloak>
+  <div v-show="isLoading">
     <HomePageMainBlog :mainBlog="mainBlog" />
     <div class="content-body">
       <div class="blogs-section">
@@ -32,6 +32,11 @@ export default {
     SidePosts,
     SubscribeSection
   },
+  data() {
+    return {
+      isLoading: false
+    }
+  },
 
   // Fetch data from the content management system and fill in data
 
@@ -51,6 +56,9 @@ export default {
     } catch (error) {
       console.log(error)
     }
+  },
+  mounted() {
+    this.isLoading = true
   }
 }
 </script>
