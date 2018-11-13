@@ -1,8 +1,10 @@
 <template>
   <div class="body">
     <TheNavbar />
-    <nuxt class="page-body" />
-    <TheFooter />
+    <div v-show="isLoading">
+      <nuxt class="page-body" />
+      <TheFooter />
+    </div>
   </div>
 </template>
 
@@ -13,6 +15,14 @@ export default {
   components: {
     TheNavbar,
     TheFooter
+  },
+  data() {
+    return {
+      isLoading: false
+    }
+  },
+  mounted() {
+    this.isLoading = true
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isLoading">
+  <div>
     <HomePageMainBlog :mainBlog="mainBlog" />
     <div class="content-body">
       <div class="blogs-section">
@@ -31,11 +31,6 @@ export default {
     BlogList,
     SidePosts,
     SubscribeSection
-  },
-  data() {
-    return {
-      isLoading: false
-    }
   },
 
   // Fetch data from the content management system and fill in data
