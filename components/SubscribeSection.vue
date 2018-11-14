@@ -33,8 +33,9 @@ export default {
       this.validate()
       if (this.error_email) return
       this.$nuxt.$loading.start()
+      let url = process.env.BASE_URL || 'http://127.0.0.1:3000'
       try {
-        const res = await this.$axios.post(`/api/subscribe`, {
+        const res = await this.$axios.post(`${url}/api/subscribe`, {
           email_address: this.email_address,
           status: `subscribed`
         })

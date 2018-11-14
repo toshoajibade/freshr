@@ -58,8 +58,9 @@ export default {
       this.validateInput()
       if (this.error.message || this.error.email_address) return
       this.$nuxt.$loading.start()
+      let url = `${process.env.HOST}:${process.env.PORT}` || 'http://127.0.0.1:3000'
       try {
-        const res = await this.$axios.post(`/api/sendmessage`, {
+        const res = await this.$axios.post(`${url}/api/sendmessage`, {
           email_address: this.email_address,
           message: this.message
         })
