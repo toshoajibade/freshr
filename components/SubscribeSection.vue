@@ -34,7 +34,7 @@ export default {
       if (this.error_email) return
       this.$nuxt.$loading.start()
       let url =
-        `${process.env.HOST}:${process.env.PORT}` || 'http://127.0.0.1:3000'
+        `freshr.netlify.com:3000` || 'http://127.0.0.1:3000'
       try {
         console.log(url, 'break', process.env.HOST, 'break', process.env.PORT)
         const res = await this.$axios.post(`https://${url}/api/subscribe`, {
