@@ -81,6 +81,9 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv'
   ],
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:3000',
+  },
 
   /*
   ** Build configuration
