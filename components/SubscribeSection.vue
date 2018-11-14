@@ -29,13 +29,12 @@ export default {
         return (this.error_email = `Please enter a valid email address`)
     },
     async subscribe() {
-      const url = process.env.BASE_URL || 'http://localhost:3000'
       this.error_email = ''
       this.validate()
       if (this.error_email) return
       this.$nuxt.$loading.start()
       try {
-        const res = await this.$axios.post(`${url}/api/subscribe`, {
+        const res = await this.$axios.post(`/api/subscribe`, {
           email_address: this.email_address,
           status: `subscribed`
         })
