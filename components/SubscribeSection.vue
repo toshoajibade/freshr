@@ -36,7 +36,8 @@ export default {
       let url =
         `${process.env.HOST}:${process.env.PORT}` || 'http://127.0.0.1:3000'
       try {
-        const res = await this.$axios.post(`${url}/api/subscribe`, {
+        console.log(url, 'break', process.env.HOST, 'break', process.env.PORT)
+        const res = await this.$axios.post(`https://${url}/api/subscribe`, {
           email_address: this.email_address,
           status: `subscribed`
         })
