@@ -7,14 +7,12 @@ module.exports = {
     try {    
       sgMail.setApiKey(process.env.SENDGRID_API)
       const msg = {
-        to: 'diamstarajibade@gmail.com',
+        to: 'freshrblog@gmail.com',
         from: req.body.email_address,
         subject: 'New Message from Subscriber',
         text: req.body.message,
       }
       let event = await sgMail.send(msg)
-
-      console.log(event[0].statusCode)
       if (event[0].statusCode === 202) {
         res.status(200).send({msg: `success`})
       }

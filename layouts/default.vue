@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div>
     <TheNavbar />
     <div v-show="isLoading">
       <nuxt class="page-body" />

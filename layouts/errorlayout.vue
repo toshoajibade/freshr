@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div>
     <TheNavbar />
     <nuxt class="page-body"/>
   </div>

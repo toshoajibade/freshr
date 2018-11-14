@@ -163,9 +163,7 @@ textarea {
   color: #565656;
 }
 
-.body {
-  background-color: #f7faff;
-}
+
 .page-body {
   padding: 6rem 10% 2rem;
   @media (max-width: 600px) {
@@ -186,7 +184,6 @@ button {
 .message {
   color: #76a6ff;
   font-weight: 400;
-
 }
 h4 {
   font-size: 1.5rem;
@@ -225,13 +222,13 @@ h5 {
 .side-posts-desktop {
   display: block;
   @media (max-width: 768px) {
-    display: none
+    display: none;
   }
 }
 .side-posts-mobile {
   display: none;
   @media (max-width: 768px) {
-    display: block
+    display: block;
   }
 }
 @font-face {
@@ -241,5 +238,14 @@ h5 {
 }
 
 a {
-  line-height: 1.5
+  line-height: 1.5;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+

@@ -2,8 +2,8 @@
   <footer class="footer">
     <div class="footer-content">
       <p class="company-description">FRESHR is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-      <p>email: cademe@outlook.com</p>
-      <nuxt-link to='/contact' class="message"> Send a message</nuxt-link>
+      <p>email: freshrblog@gmail.com</p>
+      <nuxt-link to='/contact' class="message">Send a message</nuxt-link>
     </div>
   </footer>
 </template>

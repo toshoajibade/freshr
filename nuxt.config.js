@@ -18,7 +18,7 @@ module.exports = {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+          'https://fonts.googleapis.com/css?family=Roboto:300,400|Material+Icons'
       }
     ]
   },
@@ -27,7 +27,7 @@ module.exports = {
     runtimeCaching: [
       {
         urlPattern: 'http://images.ctfassets.net/.*',
-        handler: 'cacheFirst',
+        handler: 'staleWhileRevalidate',
         method: 'GET',
         strategyOptions: {
           cacheName: 'Images',

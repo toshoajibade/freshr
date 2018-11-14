@@ -1,56 +1,65 @@
 <template>
   <div>
     <transition name="fade">
-    <div class="navbar" v-show="showNavbar">
-      <div class="navbar-brand">
-        <nuxt-link to="/">
-          <img class="logo" src="@/assets/logo.svg" alt="logo">
-        </nuxt-link>
-      </div>
-      <div>
-        <div class="contact">
-          <nuxt-link to="/contact">
-            <p>Contact Us</p>
+      <div class="navbar" v-show="showNavbar">
+        <div class="navbar-brand">
+          <nuxt-link to="/">
+            <img class="logo" src="@/assets/logo.svg" alt="logo">
           </nuxt-link>
         </div>
-        <button class="subscribe-button" @click="showSubscribeModal">Subscribe</button>
-      </div>
-    </div>
-    </transition>
-    <transition name="fade">
-      <div v-show="openModal" class="subscribe-modal-wrapper" @click.self="closeSubscribeModal">
         <div>
-          <div class="close-modal">
-            <i @click="closeSubscribeModal" class="material-icons">close</i>
+          <div class="contact">
+            <nuxt-link to="/contact">
+              <p>Contact Us</p>
+            </nuxt-link>
           </div>
-          <SubscribeSection @closeModal="closeSubscribeModal" class="subscribe-modal-input" />
+          <button class="subscribe-button" @click.prevent="openSubscribeModal = true">Subscribe</button>
         </div>
       </div>
     </transition>
+    <transition name="fade">
+      <div v-show="openSubscribeModal" class="subscribe-modal-wrapper" @click.self="openSubscribeModal = false">
+        <div>
+          <div class="close-modal">
+            <i @click="openSubscribeModal = false" class="material-icons">close</i>
+          </div>
+          <SubscribeSection @success="success" class="subscribe-modal-input" />
+        </div>
+      </div>
+    </transition>
+    <DisplayNotification v-show="showDisplayNotification" message="You have been successfully subscribed" />
   </div>
 </template>
 
 <script>
 import SubscribeSection from '@/components/SubscribeSection'
+import DisplayNotification from '@/components/DisplayNotification'
+import notification from '@/mixins/notification'
+
+import { setTimeout } from 'timers'
 export default {
   name: 'TheNavbar',
   components: {
-    SubscribeSection
+    SubscribeSection,
+    DisplayNotification
   },
+  mixins: [notification],
   data() {
     return {
-      openModal: false,
+      openSubscribeModal: false,
       showNavbar: true
     }
   },
   mounted() {
     if (window.innerWidth < 900) {
-      let prevScrollPos = window.pageYOffset;
+      let prevScrollPos = window.pageYOffset
       window.addEventListener('scroll', () => {
         let currentScrollPos = window.pageYOffset
-        if(currentScrollPos > 112) {
+        if (currentScrollPos > 112) {
           this.showNavbar = false
-          currentScrollPos > prevScrollPos ? this.showNavbar = false : this.showNavbar = true
+          currentScrollPos > prevScrollPos
+            ? (this.showNavbar = false)
+            : (this.showNavbar = true)
         } else {
           this.showNavbar = true
         }
@@ -59,11 +68,9 @@ export default {
     }
   },
   methods: {
-    showSubscribeModal() {
-      this.openModal = true
-    },
-    closeSubscribeModal(e) {
-      this.openModal = false
+    success() {
+      this.openSubscribeModal = false
+      this.showNotification()
     }
   }
 }
@@ -129,8 +136,10 @@ p {
   justify-content: center;
   align-items: center;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100vh;
   z-index: 200;
   background-color: rgba(0, 0, 0, 0.8);
   & > div {
@@ -165,12 +174,5 @@ button:focus {
     padding: 2rem 1rem;
   }
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+
 </style>

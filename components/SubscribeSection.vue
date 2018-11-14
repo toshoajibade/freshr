@@ -1,15 +1,13 @@
 <template>
   <div class="subscribe-section">
     <h5>Enjoying our blog?</h5>
-    <p class="label">Subscribe so we can be delivering them right to your inbox</p>
+    <label class="label" for="emailToSubscribe">Subscribe so we can be delivering them right to your inbox</label>
     <div class="subscribe-section-input">
-      <input v-model.trim="email_address" @blur="validate" type="email" placeholder="Enter your email here">
+      <input v-model.trim="email_address" id="emailToSubscribe" @blur="validate" type="email" placeholder="Enter your email here">
       <button class="subscribe-button" @click="subscribe">Subscribe</button>
     </div>
     <div class="error-wrapper">
       <p v-if="error_email" class="error">{{error_email}}</p>
-      <p v-else-if="subscribtionStatus" class="success">{{subscribtionStatus}}</p>
-
     </div>
   </div>
 </template>
@@ -22,7 +20,6 @@ export default {
   data() {
     return {
       email_address: '',
-      subscribtionStatus: '',
       error_email: ''
     }
   },
@@ -42,12 +39,8 @@ export default {
           status: `subscribed`
         })
         if (res.status === 200) {
-          this.subscribtionStatus = `You have been succesfully subscribed`
-          setTimeout(() => {
             this.email_address = ''
-            this.subscribtionStatus = ''
-            this.$emit('closeModal')
-          }, 3000)
+            this.$emit('success')
         }
       } catch (error) {
         error.response.status === 304

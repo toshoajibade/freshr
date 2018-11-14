@@ -6,7 +6,8 @@
         <h5>LATESTS</h5>
         <BlogList class="blog-list" :blogs='blogs' />
         <SidePosts class="side-posts-mobile" />
-        <SubscribeSection class="subscribe-section" />
+        <SubscribeSection @success="success" class="subscribe-section" />
+        <DisplayNotification v-show="showDisplayNotification" message="You have been successfully subscribed" />
       </div>
       <SidePosts class="side-posts-desktop" />
     </div>
@@ -21,9 +22,10 @@
 <script>
 import HomePageMainBlog from '@/components/HomePageMainBlog'
 import BlogList from '@/components/BlogList'
-import SuccessNotification from '@/components/SuccessNotification'
+import DisplayNotification from '@/components/DisplayNotification'
 import SidePosts from '@/components/SidePosts'
 import SubscribeSection from '@/components/SubscribeSection'
+import notification from '@/mixins/notification'
 import { client } from '@/middleware/contentManagement'
 
 export default {
@@ -32,10 +34,12 @@ export default {
     BlogList,
     SidePosts,
     SubscribeSection,
-    SuccessNotification
+    DisplayNotification
   },
 
   // Fetch data from the content management system and fill in data
+
+  mixins: [notification],
 
   async asyncData() {
     try {
@@ -54,8 +58,14 @@ export default {
       console.log(error)
     }
   },
+
   mounted() {
     this.isLoading = true
+  },
+  methods: {
+    success() {
+      this.showNotification()
+    }
   }
 }
 </script>

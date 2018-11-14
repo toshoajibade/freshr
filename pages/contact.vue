@@ -19,6 +19,7 @@
         </div>
         <button class="send-button" @click.prevent="sendMessage">Send</button>
       </form>
+    <DisplayNotification v-show="showDisplayNotification" :error="showError"  :message="notificationMessage" />
     </div>
     <SidePosts class="side-posts-desktop"/>
   </div>
@@ -27,12 +28,16 @@
 <script>
 import isEmail from 'validator/lib/isEmail'
 import isEmpty from 'validator/lib/isEmpty'
+import notification from '@/mixins/notification'
 import SidePosts from '@/components/SidePosts'
+import DisplayNotification from '@/components/DisplayNotification'
 
 export default {
   components: {
-    SidePosts
+    SidePosts,
+    DisplayNotification
   },
+  mixins: [notification],
   data() {
     return {
       message: '',
@@ -40,24 +45,38 @@ export default {
       error: {
         message: '',
         email_address: ''
-      }
+      },
+      showError: false,
+      notificationMessage: ''
     }
   },
   methods: {
     async sendMessage() {
       this.error = {}
+      this.showError = false
+      this.validateInput()
+      if (this.error.message || this.error.email_address) return
+      this.$nuxt.$loading.start()
+
       try {
-        this.validateInput()
-        if (this.error.message || this.error.email_address) return
         const res = await this.$axios.post(`/api/sendmessage`, {
           email_address: this.email_address,
           message: this.message
         })
         if (res.status === 200) {
-          console.log('success')
+          ;(this.email_address = ''),
+            (this.message = ''),
+            (this.notificationMessage = `You message has been succesfully sent`)
+          this.showNotification()
+        } else {
+          throw new Error('An error occured, please try again')
         }
-      } catch (error) {
-        console.log('failed')
+      } catch (e) {
+        this.showError = true
+        this.notificationMessage = e.message
+        this.showNotification()
+      } finally {
+        this.$nuxt.$loading.finish()
       }
     },
     validateInput() {
@@ -88,7 +107,8 @@ export default {
     outline: none;
   }
 }
-.error-wrapper, label {
+.error-wrapper,
+label {
   padding-left: 0.75rem;
 }
 .page {
