@@ -31,6 +31,7 @@ import isEmpty from 'validator/lib/isEmpty'
 import notification from '@/mixins/notification'
 import SidePosts from '@/components/SidePosts'
 import DisplayNotification from '@/components/DisplayNotification'
+import { setTimeout } from 'timers';
 
 export default {
   components: {
@@ -57,9 +58,9 @@ export default {
       this.validateInput()
       if (this.error.message || this.error.email_address) return
       this.$nuxt.$loading.start()
-
+      const url = process.env.BASE_URL || 'http://localhost:3000'
       try {
-        const res = await this.$axios.post(`/api/sendmessage`, {
+        const res = await this.$axios.post(`${url}/api/sendmessage`, {
           email_address: this.email_address,
           message: this.message
         })
@@ -76,7 +77,7 @@ export default {
         this.notificationMessage = e.message
         this.showNotification()
       } finally {
-        this.$nuxt.$loading.finish()
+          this.$nuxt.$loading.finish()
       }
     },
     validateInput() {
