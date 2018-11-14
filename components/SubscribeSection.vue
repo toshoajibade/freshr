@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import isEmail from 'validator/lib/isEmail';
+import isEmail from 'validator/lib/isEmail'
 
 export default {
   name: 'SubscribeSection',
@@ -33,15 +33,16 @@ export default {
       this.validate()
       if (this.error_email) return
       this.$nuxt.$loading.start()
-      let url = process.env.BASE_URL || 'http://127.0.0.1:3000'
+      let url =
+        `${process.env.HOST}:${process.env.PORT}` || 'http://127.0.0.1:3000'
       try {
         const res = await this.$axios.post(`${url}/api/subscribe`, {
           email_address: this.email_address,
           status: `subscribed`
         })
         if (res.status === 200) {
-            this.email_address = ''
-            this.$emit('success')
+          this.email_address = ''
+          this.$emit('success')
         }
       } catch (error) {
         error.response.status === 304
