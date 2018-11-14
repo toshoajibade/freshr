@@ -39,7 +39,7 @@ export default {
           status: `subscribed`
         })
         if (res.status === 200) {
-          this.email_address = ''
+          this.email_address = '' 
           this.$emit('success')
         }
       } catch (error) {
