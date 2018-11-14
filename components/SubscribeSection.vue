@@ -37,7 +37,7 @@ export default {
         `freshr.netlify.com:3000` || 'http://127.0.0.1:3000'
       try {
         console.log(url, 'break', process.env.HOST, 'break', process.env.PORT)
-        const res = await this.$axios.post(`https://${url}/api/subscribe`, {
+        const res = await this.$axios.post(`https://freshr.netlify.com:3000/api/subscribe`, {
           email_address: this.email_address,
           status: `subscribed`
         })

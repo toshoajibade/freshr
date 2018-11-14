@@ -58,9 +58,9 @@ export default {
       this.validateInput()
       if (this.error.message || this.error.email_address) return
       this.$nuxt.$loading.start()
-      let url = `freshr.netlify.com` || 'http://127.0.0.1:3000'
+      let url = 'http://127.0.0.1:3000'
       try {
-        const res = await this.$axios.post(`https://${url}/api/sendmessage`, {
+        const res = await this.$axios.post(`https://freshr.netlify.com/api/sendmessage`, {
           email_address: this.email_address,
           message: this.message
         })
