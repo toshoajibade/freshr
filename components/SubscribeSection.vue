@@ -14,7 +14,7 @@
 
 <script>
 import isEmail from 'validator/lib/isEmail'
-
+ 
 export default {
   name: 'SubscribeSection',
   data() {
