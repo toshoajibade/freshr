@@ -145,10 +145,13 @@ p {
   background-color: rgba(0, 0, 0, 0.8);
   & > div {
     width: 400px;
-    margin: 2rem;
     border-radius: 25px;
     background-color: #f7faff;
     position: relative;
+    @media (max-width: 600px) {
+      width: 100%;
+      margin: 1rem;
+    }
     & > .close-modal {
       position: absolute;
       top: 0px;

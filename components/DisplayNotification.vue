@@ -43,6 +43,7 @@ export default {
 .notification {
   padding: 1rem;
   height: 100px;
+  width: 400px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -50,6 +51,10 @@ export default {
   margin-top: 6rem;
   background-color: #f7faff;
   border-radius: 25px;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin: 1rem;
+  }
   & > p {
     text-align: center;
     font-size: 1.2rem;

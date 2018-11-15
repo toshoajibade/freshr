@@ -2,7 +2,7 @@
   <div class="page">
     <div class="main">
       <h4>We will definitely love to hear from you</h4>
-      <form>
+      <form autocomplete="off">
         <div>
           <label for="senderEmailAddress">Email</label>
           <input v-model.trim="email_address" id="senderEmailAddress" class="input" type="email" placeholder="Enter your email here">
