@@ -141,6 +141,7 @@ p {
   right: 0px;
   height: 100vh;
   z-index: 200;
+  padding: 0rem 1rem;
   background-color: rgba(0, 0, 0, 0.8);
   & > div {
     width: 400px;
