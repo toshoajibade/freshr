@@ -1,15 +1,15 @@
 <template>
-  <div class="subscribe-section">
+  <form class="subscribe-section" autocomplete="off">
     <h5>Enjoying our blog?</h5>
     <label class="label" for="emailToSubscribe">Subscribe so we can be delivering them right to your inbox</label>
     <div class="subscribe-section-input">
       <input v-model.trim="email_address" id="emailToSubscribe" @blur="validate" type="email" placeholder="Enter your email here">
-      <button class="subscribe-button" @click="subscribe">Subscribe</button>
+      <button class="subscribe-button" @click.prevent="subscribe">Subscribe</button>
     </div>
     <div class="error-wrapper">
       <p v-if="error_email" class="error">{{error_email}}</p>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -65,10 +65,9 @@ export default {
 .subscribe-section-input {
   height: 3rem;
   border-radius: 25px;
-  width: 100%;
   display: flex;
   & > input {
-    flex: 1 1 auto;
+    width: 100%;
     padding-left: 1rem;
     border: 1px solid #76a6ff;
     border-radius: 25px 0px 0px 25px;

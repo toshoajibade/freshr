@@ -38,6 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 3rem;
   z-index: 1000;
 }
 .notification {
