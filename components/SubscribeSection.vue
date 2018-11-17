@@ -16,7 +16,7 @@
 import isEmail from 'validator/lib/isEmail' 
  
 export default {
-  name: 'SubscribeSection',
+  name: 'SubscribeSection', 
   data() {
     return {
       email_address: '',
