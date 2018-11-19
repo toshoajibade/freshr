@@ -66,7 +66,7 @@ export default {
   padding: 0rem 1rem;
   box-sizing: border-box;
   &:active {
-    background-color: hsl(219, 100%, 66%);
+    background-color: rgb(81, 142, 255);
   }
 }
 .subscribe-section-input {

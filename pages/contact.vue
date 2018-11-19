@@ -52,6 +52,8 @@ export default {
     }
   },
   methods: {
+    
+    //Make a call to the server to send message to FreshrBlog 
     async sendMessage() {
       this.error = {}
       this.showError = false
@@ -125,6 +127,9 @@ label {
   border-radius: 25px;
   color: white;
   padding: 0.5rem 2rem;
+  &:active {
+    background-color: rgb(81, 142, 255)
+  }
 }
 button:focus,
 textarea:focus {

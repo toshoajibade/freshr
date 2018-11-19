@@ -18,6 +18,7 @@ config.dev = !(process.env.NODE_ENV === 'production')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+// Call our route controllers to handle requests
 app.post('/api/subscribe', controller.addSubsciber)
 app.post('/api/sendmessage', controller.sendMessage)
 

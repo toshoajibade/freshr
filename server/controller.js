@@ -1,8 +1,10 @@
+// @sendgrid/mail is module that handles sending request to SendGrid Mail service
 const sgMail = require('@sendgrid/mail')
+
 const axios = require('axios')
 
 
-module.exports = {
+module.exports = { /**Send message to the blog's email using @sendgrid/mail api */
   async sendMessage(req, res) {
     try {    
       sgMail.setApiKey(process.env.SENDGRID_API)
@@ -21,6 +23,7 @@ module.exports = {
     }
   },
 
+  // make a call to MailChimp to add new subscriber to list
   async addSubsciber(req, res) {
     try {
       const addSubscriberToMailChimp = await axios.post(

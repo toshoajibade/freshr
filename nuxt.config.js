@@ -1,4 +1,5 @@
 const pkg = require('./package')
+require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
@@ -83,7 +84,10 @@ module.exports = {
   ],
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1:3000',
-    HOST: process.env.HOST || 'http://127.0.0.1'
+    HOST: process.env.HOST || 'http://127.0.0.1',
+    PORT: process.env.PORT || 3000,
+    CONTENTFUL_API_KEY: process.env.CONTENTFUL_API_KEY || '',
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || ''
   },
 
   /*
@@ -113,6 +117,8 @@ module.exports = {
           )
         }
          */
+
+      //SendGrid fails without setting these parameters because they are node server-side modules
       config.node = {
         console: true,
         fs: 'empty',
