@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import isEmail from 'validator/lib/isEmail' 
- 
+import isEmail from 'validator/lib/isEmail'
+
 export default {
-  name: 'SubscribeSection', 
+  name: 'SubscribeSection',
   data() {
     return {
       email_address: '',
@@ -32,14 +32,18 @@ export default {
       this.error_email = ''
       this.validate()
       if (this.error_email) return
+
       this.$nuxt.$loading.start()
       try {
-        const res = await this.$axios.post(`${process.env.baseUrl}/api/subscribe`, {
-          email_address: this.email_address,
-          status: `subscribed`
-        })
+        const res = await this.$axios.post(
+          `${process.env.baseUrl}/api/subscribe`,
+          {
+            email_address: this.email_address,
+            status: `subscribed`
+          }
+        )
         if (res.status === 200) {
-          this.email_address = '' 
+          this.email_address = ''
           this.$emit('success')
         }
       } catch (error) {
@@ -61,6 +65,9 @@ export default {
   color: white;
   padding: 0rem 1rem;
   box-sizing: border-box;
+  &:active {
+    background-color: hsl(219, 100%, 66%);
+  }
 }
 .subscribe-section-input {
   height: 3rem;

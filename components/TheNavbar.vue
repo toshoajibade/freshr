@@ -130,6 +130,9 @@ p {
   height: 50%;
   margin-left: 1rem;
   background-color: transparent;
+  &:active {
+    background-color: hsl(219, 100%, 66%);
+  }
 }
 .subscribe-modal-wrapper {
   display: flex;
