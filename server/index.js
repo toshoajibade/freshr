@@ -7,7 +7,10 @@ const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 const controller = require('./controller')
+const redirectSSL = require('redirect-ssl')
 
+
+app.use(redirectSSL)
 app.set('port', port)
 dotenv.config()
 // Import and Set Nuxt.js options
